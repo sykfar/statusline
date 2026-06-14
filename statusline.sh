@@ -473,8 +473,19 @@ if [ -n "$five_hour_pct" ]; then
     five_hour_pct_color=$(color_for_pct "$five_hour_pct")
     five_hour_pct_fmt=$(printf "%3d" "$five_hour_pct")
 
+    # Time remaining in the 5h window (reset - now), formatted "2h 14m" or "14m".
+    five_hour_left=""
+    if [[ "$five_hour_reset_epoch" =~ ^[0-9]+$ ]]; then
+        rem=$(( five_hour_reset_epoch - $(date +%s) ))
+        if [ "$rem" -gt 0 ]; then
+            rh=$(( rem / 3600 )); rmin=$(( (rem % 3600) / 60 ))
+            if [ "$rh" -gt 0 ]; then five_hour_left="${rh}h ${rmin}m"; else five_hour_left="${rmin}m"; fi
+        fi
+    fi
+
     rate_lines+="${white}current${reset} ${five_hour_bar} ${five_hour_pct_color}${five_hour_pct_fmt}%${reset}"
     [ -n "$five_hour_reset" ] && rate_lines+=" ${dim}⟳${reset} ${white}${five_hour_reset}${reset}"
+    [ -n "$five_hour_left" ] && rate_lines+=" ${dim}⏳${reset} ${white}${five_hour_left}${reset}"
 fi
 
 if [ -n "$seven_day_pct" ]; then

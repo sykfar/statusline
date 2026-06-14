@@ -6,7 +6,7 @@ grwthlab-branded statusline for [Claude Code](https://claude.ai/code) with proje
 ◆ grwth/rbac │ Opus 4 │ ✍️ 34% │ main +3 ↑2↓0 │ ⏱ 12m │ ◑ default
 ⎔ node 22.4 │ pnpm │ ● :3000 │ "fix: auth token refresh"
 
-current ●●●●○○○○○○  42% ⟳ 3:15pm
+current ●●●●○○○○○○  42% ⟳ 3:15pm  ⏳ 2h 14m
 weekly  ●●○○○○○○○○  18% ⟳ apr 10
 ```
 
@@ -25,7 +25,7 @@ weekly  ●●○○○○○○○○  18% ⟳ apr 10
 - Last commit message
 
 **Lines 3+ — Rate Limits**
-- 5-hour rolling limit with visual progress bar
+- 5-hour rolling limit with visual progress bar, reset time, and time remaining (⏳)
 - 7-day rolling limit
 - Extra credits (if enabled)
 
